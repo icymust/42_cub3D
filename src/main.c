@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:19:24 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/09 14:52:44 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/09 15:08:46 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,28 @@ int	key_press(int keycode, t_game *game)
 	return (0);
 }
 
+int print_key_hook(char *s)
+{
+    printf("%s",s);
+    return(0);
+}
+
 int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == 65307)
 		close_win(game);
+	else if (keycode == 119)
+		print_key_hook("W\n");
+	else if (keycode == 97)
+		print_key_hook("A\n");
+	else if (keycode == 115)
+		print_key_hook("S\n");
+	else if (keycode == 100)
+		print_key_hook("D\n");
+	else if (keycode == 65361)
+		print_key_hook("<-\n");
+	else if (keycode == 65363)
+		print_key_hook("->\n");
 	return (0);
 }
 
