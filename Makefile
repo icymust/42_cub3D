@@ -5,7 +5,11 @@ CFLAGS = -Wall -Wextra -Werror -I$(MLX_DIR)
 
 SRCS = src/main.c \
 	src/game_utils.c \
-	src/game_hooks.c 
+	src/game_hooks.c \
+	src/map.c \
+	src/map_utils.c \
+	src/map_check.c \
+	src/flood.c
 
 BONUS = 
 

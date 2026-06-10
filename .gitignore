@@ -3,3 +3,4 @@ minilibx_macos_opengl/
 .vscode/
 *.o
 cub3d
+*.a
