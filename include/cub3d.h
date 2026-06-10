@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/09 14:06:00 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/10 17:45:44 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,21 @@ typedef struct s_vars
 	int		win_height;
 }			t_vars;
 
+typedef struct s_map
+{
+	char	**grid;
+	int		width;
+	int		height;
+	int		spawn;
+}			t_map;
+
 typedef struct s_game
 {
-    t_vars vars;
+	t_vars	vars;
+	t_map	map;
 }			t_game;
+
+void	hook(t_game *game);
+int	close_win(t_game *game);
 
 #endif

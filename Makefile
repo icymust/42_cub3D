@@ -3,7 +3,9 @@ BONUS_NAME = so_long_bonus
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(MLX_DIR)
 
-SRCS = src/main.c 
+SRCS = src/main.c \
+	src/game_utils.c \
+	src/game_hooks.c 
 
 BONUS = 
 

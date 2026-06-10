@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:19:24 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/09 15:08:46 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/10 17:50:34 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,57 +47,6 @@ int	setup_mlx(t_game *game)
 	if (!game->vars.win)
 		return (0);
 	return (1);
-}
-
-int	close_win(t_game *game)
-{
-	if (!game)
-		exit(0);
-	if (game->vars.mlx && game->vars.win)
-	{
-		mlx_destroy_window(game->vars.mlx, game->vars.win);
-		game->vars.win = NULL;
-	}
-	exit(0);
-	return (0);
-}
-
-int	key_press(int keycode, t_game *game)
-{
-	(void)game;
-	ft_printf("key id: %d\n", keycode);
-	return (0);
-}
-
-int print_key_hook(char *s)
-{
-    printf("%s",s);
-    return(0);
-}
-
-int	key_hook(int keycode, t_game *game)
-{
-	if (keycode == 65307)
-		close_win(game);
-	else if (keycode == 119)
-		print_key_hook("W\n");
-	else if (keycode == 97)
-		print_key_hook("A\n");
-	else if (keycode == 115)
-		print_key_hook("S\n");
-	else if (keycode == 100)
-		print_key_hook("D\n");
-	else if (keycode == 65361)
-		print_key_hook("<-\n");
-	else if (keycode == 65363)
-		print_key_hook("->\n");
-	return (0);
-}
-
-void	hook(t_game *game)
-{
-	mlx_hook(game->vars.win, 2, 1L << 0, key_hook, game);
-	mlx_hook(game->vars.win, 17, 0, close_win, game);
 }
 
 int	main(int ac, char **av)
