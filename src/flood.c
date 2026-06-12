@@ -5,19 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/10 18:28:51 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/10 18:51:02 by mmustone         ###   ########.fr       */
+/*   Created: 2026/06/12 13:13:27 by mmustone          #+#    #+#             */
+/*   Updated: 2026/06/12 13:13:28 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int	check_path(t_map *m)
-{
-	int	sy;
-	int	sx;
-
-	if (find_player(m, &sy, &sx) < 0)
-		return (1);
-	return (0);
-}

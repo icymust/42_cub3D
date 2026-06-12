@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:53:31 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/10 19:01:32 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/12 13:03:06 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,10 @@ void	free_map(t_map *map)
 
 static int	validate_dimensions(t_map *map)
 {
-	int	i;
-
-	if (map->height < 3 || map->width < 3)
+	if (map->height < 3)
 	{
 		ft_printf("Error\nMap is too small\n");
 		return (1);
-	}
-	i = 1;
-	while (i < map->height)
-	{
-		if ((int)ft_strlen(map->grid[i]) != map->width)
-		{
-			ft_printf("Error\nMap lines are not of equal length\n");
-			return (1);
-		}
-		i++;
 	}
 	return (0);
 }
@@ -100,7 +88,7 @@ int	map_load(t_map *map, char *filename)
 		free_map(map);
 		return (1);
 	}
-	if (grid_check(map) || check_path(map))
+	if (grid_check(map))
 	{
 		ft_printf("Error\nMap validation error\n");
 		free_map(map);

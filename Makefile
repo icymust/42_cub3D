@@ -1,4 +1,4 @@
-NAME = cub3d
+NAME = cub3D
 BONUS_NAME = so_long_bonus
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(MLX_DIR)
@@ -9,7 +9,7 @@ SRCS = src/main.c \
 	src/map.c \
 	src/map_utils.c \
 	src/map_check.c \
-	src/flood.c
+	src/flood.c 
 
 BONUS = 
 

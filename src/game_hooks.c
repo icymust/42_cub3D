@@ -6,22 +6,25 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:13:02 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/10 17:48:26 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/12 13:53:45 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-int print_key_hook(char *s)
+int	print_key_hook(char *s)
 {
-    printf("%s",s);
-    return(0);
+	printf("%s", s);
+	return (0);
 }
 
 int	key_hook(int keycode, t_game *game)
 {
 	if (keycode == 65307)
+	{
+		print_key_hook("ESC\n");
 		close_win(game);
+	}
 	else if (keycode == 119)
 		print_key_hook("W\n");
 	else if (keycode == 97)

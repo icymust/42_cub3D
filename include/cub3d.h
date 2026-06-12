@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/10 18:32:56 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/12 13:03:10 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,5 @@ int			map_load(t_map *map, char *filename);
 void		free_map(t_map *map);
 int			grid_check(t_map *m);
 int	find_player(t_map *m, int *sy, int *sx);
-int	check_path(t_map *m);
 
 #endif

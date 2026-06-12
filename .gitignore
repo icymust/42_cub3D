@@ -2,5 +2,5 @@ minilibx_macos_opengl/
 # minilibx-linux/
 .vscode/
 *.o
-cub3d
+cub3D
 *.a
