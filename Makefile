@@ -9,7 +9,6 @@ SRCS = src/main.c \
 	src/map.c \
 	src/map_utils.c \
 	src/map_check.c \
-	src/flood.c 
 
 BONUS = 
 
