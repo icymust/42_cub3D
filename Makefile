@@ -9,6 +9,12 @@ SRCS = src/main.c \
 	src/map.c \
 	src/map_utils.c \
 	src/map_check.c \
+	src/map_read.c \
+	src/map_closed.c \
+	src/config.c \
+	src/config_utils.c \
+	src/config_color.c \
+	src/config_save.c
 
 BONUS = 
 

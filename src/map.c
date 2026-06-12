@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:53:31 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/12 13:03:06 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/12 18:32:18 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,28 @@ static int	validate_dimensions(t_map *map)
 	return (0);
 }
 
-static int	alloc_and_read(t_map *map, const char *filename)
+static int	get_map_height(const char *filename, int *height)
 {
-	int	height;
-
-	height = count_lines(filename);
-	if (height < 0)
+	*height = count_map_lines(filename);
+	if (*height < 0)
 	{
 		ft_printf("Error\nCannot open map file\n");
 		return (1);
 	}
-	if (height < 3)
+	if (*height < 3)
 	{
 		ft_printf("Error\nMap is too small\n");
 		return (1);
 	}
+	return (0);
+}
+
+static int	alloc_and_read(t_map *map, const char *filename)
+{
+	int	height;
+
+	if (get_map_height(filename, &height))
+		return (1);
 	map->grid = malloc(sizeof(char *) * (height + 1));
 	if (!map->grid)
 	{
@@ -79,8 +86,6 @@ int	map_load(t_map *map, char *filename)
 	map->grid = NULL;
 	map->width = 0;
 	map->height = 0;
-	if (map_name_check(filename))
-		return (1);
 	if (alloc_and_read(map, filename))
 		return (1);
 	if (validate_dimensions(map))
