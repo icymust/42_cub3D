@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:53:31 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/15 01:37:01 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/15 01:40:52 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ static int	get_map_height(const char *filename, int *height)
 	if (*height < 0)
 	{
 		ft_printf("Error\nCannot open map file\n");
+		return (1);
+	}
+	if (*height == 0)
+	{
+		ft_printf("Error\nMap not found\n");
 		return (1);
 	}
 	if (*height < 3)
