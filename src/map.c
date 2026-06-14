@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:53:31 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/12 18:32:18 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/15 01:37:01 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,6 @@ void	free_map(t_map *map)
 	map->grid = NULL;
 	map->height = 0;
 	map->width = 0;
-}
-
-static int	validate_dimensions(t_map *map)
-{
-	if (map->height < 3)
-	{
-		ft_printf("Error\nMap is too small\n");
-		return (1);
-	}
-	return (0);
 }
 
 static int	get_map_height(const char *filename, int *height)
@@ -70,10 +60,7 @@ static int	alloc_and_read(t_map *map, const char *filename)
 		return (1);
 	}
 	if (read_grid(map, filename, height))
-	{
-		ft_printf("Error\nMap problem\n");
 		return (1);
-	}
 	map->height = height;
 	map->width = ft_strlen(map->grid[0]);
 	return (0);
@@ -88,14 +75,8 @@ int	map_load(t_map *map, char *filename)
 	map->height = 0;
 	if (alloc_and_read(map, filename))
 		return (1);
-	if (validate_dimensions(map))
-	{
-		free_map(map);
-		return (1);
-	}
 	if (grid_check(map))
 	{
-		ft_printf("Error\nMap validation error\n");
 		free_map(map);
 		return (1);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 18:34:02 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/12 18:35:51 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/15 01:26:00 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,19 @@ static int	open_map_file(t_map *map, const char *filename)
 	return (fd);
 }
 
+static int	check_empty_map_line(t_map *map, int i, char *line, int fd)
+{
+	if (is_empty_line(line))
+	{
+		ft_printf("Error\nEmpty line in map\n");
+		free(line);
+		free_partial_grid(map, i);
+		close(fd);
+		return (1);
+	}
+	return (0);
+}
+
 int	read_grid(t_map *map, const char *filename, int height)
 {
 	int		fd;
@@ -51,6 +64,8 @@ int	read_grid(t_map *map, const char *filename, int height)
 	{
 		if (!in_map && is_map_line(line))
 			in_map = 1;
+		if (in_map && check_empty_map_line(map, i, line, fd))
+			return (1);
 		if (in_map)
 			store_map_line(map, line, &i);
 		else
