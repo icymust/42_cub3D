@@ -6,19 +6,23 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 18:04:06 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/14 20:01:48 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/14 22:47:55 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static void	remove_newline(char *s)
+static void	trim_texture_path(char *s)
 {
 	int	len;
 
 	len = ft_strlen(s);
-	if (len > 0 && s[len - 1] == '\n')
+	while (len > 0 && (s[len - 1] == ' ' || s[len - 1] == '\t' || s[len
+			- 1] == '\n'))
+	{
 		s[len - 1] = '\0';
+		len--;
+	}
 }
 
 static int	check_xpm_extension(char *path)
@@ -41,7 +45,9 @@ static int	save_texture(char **dst, char *path)
 		printf("Error\nDuplicate texture configuration\n");
 		return (1);
 	}
-	remove_newline(path);
+	while (*path == ' ' || *path == '\t')
+		path++;
+	trim_texture_path(path);
 	if (check_xpm_extension(path))
 		return (1);
 	*dst = ft_strdup(path);
