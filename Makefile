@@ -16,7 +16,7 @@ SRCS = src/main.c \
 	src/config_color.c \
 	src/config_save.c
 
-BONUS = 
+BONUS =
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
@@ -24,7 +24,7 @@ LIBFT = lib/libft/libft.a
 MLX_DIR = lib/minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
-MAC_MLX_DIR = include/minilibx_opengl
+MAC_MLX_DIR = lib/minilibx_opengl
 MAC_MLX_LIB = $(MAC_MLX_DIR)/libmlx.a
 MAC_MLX_FLAGS = -L$(MAC_MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 

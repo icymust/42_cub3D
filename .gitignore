@@ -4,3 +4,4 @@ minilibx_macos_opengl/
 *.o
 cub3D
 *.a
+.clangd
