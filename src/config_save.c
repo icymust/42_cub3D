@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_save.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 18:04:06 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/12 18:46:53 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/14 20:01:48 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,35 @@ static void	remove_newline(char *s)
 		s[len - 1] = '\0';
 }
 
+static int	check_xpm_extension(char *path)
+{
+	int	len;
+
+	len = ft_strlen(path);
+	if (len < 4 || ft_strncmp(path + len - 4, ".xpm", 4) != 0)
+	{
+		printf("Error\nTexture file must have .xpm extension\n");
+		return (1);
+	}
+	return (0);
+}
+
 static int	save_texture(char **dst, char *path)
 {
 	if (*dst)
+	{
+		printf("Error\nDuplicate texture configuration\n");
 		return (1);
+	}
 	remove_newline(path);
+	if (check_xpm_extension(path))
+		return (1);
 	*dst = ft_strdup(path);
 	if (!*dst)
+	{
+		printf("Error\nFailed to allocate memory for texture path\n");
 		return (1);
+	}
 	return (0);
 }
 

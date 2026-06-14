@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:57:27 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/12 18:43:46 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/14 20:02:20 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,13 @@ int	map_name_check(const char *filename)
 	int	length;
 
 	length = ft_strlen(filename);
-	if (length < 4)
+	if (length < 5)
+	{
+		printf("Error\nInvalid filename\n");
 		return (1);
+	}
 	if (ft_strncmp(&filename[length - 4], ".cub", 4) == 0)
 		return (0);
+	printf("Error\nMap file must have .cub extension\n");
 	return (1);
 }

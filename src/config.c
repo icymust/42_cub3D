@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 16:49:02 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/12 18:44:43 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/14 20:02:06 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 static int	config_check_complete(t_config *config)
 {
 	if (!config->no || !config->so || !config->we || !config->ea)
+	{
+		printf("Error\nMissing texture configuration\n");
 		return (1);
+	}
 	if (!config->has_floor || !config->has_ceiling)
+	{
+		printf("Error\nMissing floor or ceiling configuration\n");
 		return (1);
+	}
 	return (0);
 }
 
@@ -29,6 +35,7 @@ static int	handle_config_line(t_config *config, char *line)
 		return (config_save(config, line));
 	if (is_map_line(line))
 		return (2);
+	printf("Error\nInvalid configuration line\n");
 	return (1);
 }
 
@@ -52,7 +59,10 @@ int	config_parse(t_config *config, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
+	{
+		printf("Error\nFailed to open file %s\n", filename);
 		return (1);
+	}
 	line = get_next_line(fd);
 	while (line)
 	{

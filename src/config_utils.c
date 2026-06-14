@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 17:56:11 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/12 18:37:01 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/14 18:44:24 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	is_map_line(char *line)
 	i = 0;
 	while (line[i] == ' ')
 		i++;
-	if (line[i] == '1')
+	if (line[i] == '1' || line[i] == '0')
 		return (1);
 	return (0);
 }

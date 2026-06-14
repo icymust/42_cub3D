@@ -24,6 +24,9 @@ LIBFT = lib/libft/libft.a
 MLX_DIR = lib/minilibx-linux
 MLX_LIB = $(MLX_DIR)/libmlx.a
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
+MAC_MLX_DIR = include/minilibx_opengl
+MAC_MLX_LIB = $(MAC_MLX_DIR)/libmlx.a
+MAC_MLX_FLAGS = -L$(MAC_MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
@@ -44,6 +47,15 @@ $(BONUS_NAME): $(LIBFT) $(MLX_LIB) $(BONUS_OBJS)
 
 bonus: $(BONUS_NAME)
 
+mac:
+	rm -f $(OBJS) $(BONUS_OBJS) $(NAME) $(BONUS_NAME)
+	$(MAKE) -C lib/libft fclean
+	$(MAKE) -C $(MAC_MLX_DIR) clean
+	$(MAKE) MLX_DIR=$(MAC_MLX_DIR) MLX_LIB=$(MAC_MLX_LIB) \
+		MLX_FLAGS="$(MAC_MLX_FLAGS)" $(NAME)
+	rm -f $(OBJS) $(BONUS_OBJS)
+	make -C lib/libft clean
+
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
 	make -C lib/libft clean
@@ -56,4 +68,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus mac
