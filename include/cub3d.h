@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/14 20:27:31 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/14 23:02:00 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ int				finalize_read(t_map *map, int i, int h);
 void			free_partial_grid(t_map *map, int count);
 int				check_map_closed(t_map *m);
 void			drain_file(int fd);
+char			**split_rgb(char *color);
 
 #endif

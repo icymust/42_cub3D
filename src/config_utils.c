@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 17:56:11 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/14 18:44:24 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/14 22:56:22 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,14 @@ int	handle_parse_status(int fd, int status)
 		return (2);
 	}
 	return (0);
+}
+
+char	**split_rgb(char *color)
+{
+	char	**rgb;
+
+	rgb = ft_split(color, ',');
+	if (!rgb)
+		printf("Error\nFailed to allocate RGB values\n");
+	return (rgb);
 }

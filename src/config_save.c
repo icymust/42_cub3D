@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 18:04:06 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/14 22:47:55 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/14 23:01:22 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	trim_texture_path(char *s)
 
 	len = ft_strlen(s);
 	while (len > 0 && (s[len - 1] == ' ' || s[len - 1] == '\t' || s[len
-			- 1] == '\n'))
+				- 1] == '\n'))
 	{
 		s[len - 1] = '\0';
 		len--;

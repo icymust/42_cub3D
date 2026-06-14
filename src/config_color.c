@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 18:05:02 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/14 20:01:37 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/14 22:59:27 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,11 @@ int	parse_color(int *dst, int *has_color, char *color)
 	char	**rgb;
 
 	if (*has_color)
+	{
+		printf("Error\nDuplicate color configuration\n");
 		return (1);
-	rgb = ft_split(color, ',');
+	}
+	rgb = split_rgb(color);
 	if (!rgb)
 		return (1);
 	if (check_rgb_format(rgb))
