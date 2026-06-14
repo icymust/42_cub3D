@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 18:04:06 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/14 23:01:22 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/14 23:09:00 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@ static int	check_xpm_extension(char *path)
 	return (0);
 }
 
+static int	check_texture_file(char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		printf("Error\nTexture file cannot be opened\n");
+		return (1);
+	}
+	close(fd);
+	return (0);
+}
+
 static int	save_texture(char **dst, char *path)
 {
 	if (*dst)
@@ -49,6 +63,8 @@ static int	save_texture(char **dst, char *path)
 		path++;
 	trim_texture_path(path);
 	if (check_xpm_extension(path))
+		return (1);
+	if (check_texture_file(path))
 		return (1);
 	*dst = ft_strdup(path);
 	if (!*dst)
