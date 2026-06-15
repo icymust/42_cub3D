@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/14 23:02:00 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/15 12:01:55 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ void			free_partial_grid(t_map *map, int count);
 int				check_map_closed(t_map *m);
 void			drain_file(int fd);
 char			**split_rgb(char *color);
+int				process_grid_line(t_map *map, char *line, int *i, int *in_map);
 
 #endif

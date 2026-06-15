@@ -1,7 +1,7 @@
-NO ./path_to_north_texture.xpm
-SO ./path_to_south_texture.xpm
-WE ./path_to_west_texture.xpm
-EA ./path_to_east_texture.xpm
+NO textures/no_texture.xpm
+SO textures/no_texture.xpm
+WE textures/no_texture.xpm
+EA textures/no_texture.xpm
 
 F 2,100,0
 C 225,30,0

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:57:27 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/14 20:02:20 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/15 12:01:58 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,22 @@ int	map_name_check(const char *filename)
 		return (0);
 	printf("Error\nMap file must have .cub extension\n");
 	return (1);
+}
+
+int	process_grid_line(t_map *map, char *line, int *i, int *in_map)
+{
+	if (!*in_map && is_map_line(line))
+		*in_map = 1;
+	if (*in_map && is_empty_line(line))
+	{
+		ft_printf("Error\nEmpty line in map\n");
+		free(line);
+		free_partial_grid(map, *i);
+		return (1);
+	}
+	if (*in_map)
+		store_map_line(map, line, i);
+	else
+		free(line);
+	return (0);
 }

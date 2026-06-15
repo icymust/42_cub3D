@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_read.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 18:34:02 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/15 01:26:00 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/15 12:02:02 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,14 @@ int	read_grid(t_map *map, const char *filename, int height)
 	line = get_next_line(fd);
 	while (line && i < height)
 	{
-		if (!in_map && is_map_line(line))
-			in_map = 1;
-		if (in_map && check_empty_map_line(map, i, line, fd))
+		if (process_grid_line(map, line, &i, &in_map))
+		{
+			close(fd);
 			return (1);
-		if (in_map)
-			store_map_line(map, line, &i);
-		else
-			free(line);
+		}
 		line = get_next_line(fd);
 	}
-	if (line)
-		free(line);
+	free(line);
 	close(fd);
 	return (finalize_read(map, i, height));
 }
