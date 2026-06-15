@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/15 15:19:00 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/15 16:26:14 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,12 @@ typedef struct s_vars
 
 typedef struct s_player
 {
-	int			pos_x;
-	int			pos_y;
+	double		pos_x;
+	double		pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
 	int			steps;
 }				t_player;
 
@@ -91,7 +95,7 @@ typedef struct s_pos
 	int			y;
 }				t_pos;
 
-void			hook(t_game *game);
+void			place_player_and_hook(t_game *game);
 int				close_win(t_game *game);
 int				count_map_lines(const char *filename);
 int				read_grid(t_map *map, const char *filename, int height);
@@ -99,7 +103,7 @@ int				map_name_check(const char *filename);
 int				map_load(t_map *map, char *filename);
 void			free_map(t_map *map);
 int				grid_check(t_map *m);
-int				find_player(t_map *m, int *sy, int *sx);
+int				find_player(t_map *m, t_player *player);
 int				config_parse(t_config *config, char *filename);
 void			free_split(char **rgb);
 int				is_config_line(char *line);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_hooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:13:02 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/14 18:12:11 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/15 16:24:24 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ int	key_hook(int keycode, t_game *game)
 	return (0);
 }
 
-void	hook(t_game *game)
+void	place_player_and_hook(t_game *game)
 {
+	if (find_player(&game->map, &game->player))
+		return ;
 	mlx_hook(game->vars.win, 2, 1L << 0, key_hook, game);
 	mlx_hook(game->vars.win, 17, 0, close_win, game);
 }

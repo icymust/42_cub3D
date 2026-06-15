@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 18:26:11 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/15 00:57:48 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/15 16:19:29 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,30 +53,6 @@ static int	count_elems(t_map *m)
 	if (spawn_check(m->spawn))
 		return (1);
 	return (0);
-}
-
-int	find_player(t_map *m, int *sy, int *sx)
-{
-	t_pos	pos;
-
-	pos.y = 0;
-	while (pos.y < m->height)
-	{
-		pos.x = 0;
-		while (m->grid[pos.y][pos.x])
-		{
-			if (m->grid[pos.y][pos.x] == 'N' || m->grid[pos.y][pos.x] == 'S'
-				|| m->grid[pos.y][pos.x] == 'E' || m->grid[pos.y][pos.x] == 'W')
-			{
-				*sy = pos.y;
-				*sx = pos.x;
-				return (0);
-			}
-			pos.x++;
-		}
-		pos.y++;
-	}
-	return (1);
 }
 
 int	grid_check(t_map *m)
