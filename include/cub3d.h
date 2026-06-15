@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/15 12:04:56 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/15 15:19:00 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
+
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
+
+typedef enum e_tex_id
+{
+	TEX_NO,
+	TEX_SO,
+	TEX_WE,
+	TEX_EA
+}				t_tex_id;
 
 typedef struct s_vars
 {
@@ -46,6 +57,17 @@ typedef struct s_config
 	int			has_ceiling;
 }				t_config;
 
+typedef struct s_texture
+{
+	void		*img;
+	char		*addr;
+	int			width;
+	int			height;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_texture;
+
 typedef struct s_map
 {
 	char		**grid;
@@ -60,6 +82,7 @@ typedef struct s_game
 	t_map		map;
 	t_player	player;
 	t_config	config;
+	t_texture	textures[4];
 }				t_game;
 
 typedef struct s_pos
@@ -90,5 +113,7 @@ void			free_partial_grid(t_map *map, int count);
 int				check_map_closed(t_map *m);
 void			drain_file(int fd);
 char			**split_rgb(char *color);
+int				load_textures(t_game *game);
+void			destroy_images(t_game *g);
 
 #endif

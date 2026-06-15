@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:19:24 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/12 18:30:10 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/15 15:18:37 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static int	handle_args_and_map(int ac, char **av, t_game *game)
 		return (1);
 	if (map_load(&game->map, av[1]))
 		return (1);
-	game->vars.win_height = 500;
-	game->vars.win_width = 1000;
+	game->vars.win_height = WIN_HEIGHT;
+	game->vars.win_width = WIN_WIDTH;
 	return (0);
 }
 
@@ -54,6 +54,13 @@ int	main(int ac, char **av)
 	{
 		free_map(&game.map);
 		ft_printf("Error\nFailed to initialize MiniLibX\n");
+		return (1);
+	}
+	if (load_textures(&game))
+	{
+		destroy_images(&game);
+		free_map(&game.map);
+		ft_printf("Error\nFailed to load textures\n");
 		return (1);
 	}
 	hook(&game);

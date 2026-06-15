@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:14:18 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/12 18:30:02 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/15 15:09:15 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,29 @@ void	free_split(char **rgb)
 	free(rgb);
 }
 
+void	destroy_images(t_game *g)
+{
+	int	i;
+
+	if (!g || !g->vars.mlx)
+		return ;
+	i = 0;
+	while (i < 4)
+	{
+		if (g->textures[i].img)
+		{
+			mlx_destroy_image(g->vars.mlx, g->textures[i].img);
+			g->textures[i].img = NULL;
+		}
+		i++;
+	}
+}
+
 int	close_win(t_game *game)
 {
 	if (!game)
 		exit(0);
+	destroy_images(game);
 	if (game->vars.mlx && game->vars.win)
 	{
 		mlx_destroy_window(game->vars.mlx, game->vars.win);

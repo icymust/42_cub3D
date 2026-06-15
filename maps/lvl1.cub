@@ -1,7 +1,7 @@
-NO textures/no_texture.xpm
-SO textures/no_texture.xpm
-WE textures/no_texture.xpm
-EA textures/no_texture.xpm
+NO textures/wall.xpm
+SO textures/wall.xpm
+WE textures/wall.xpm
+EA textures/wall.xpm
 
 F 2,100,0
 C 225,30,0
