@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 18:34:02 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/15 12:02:02 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/15 12:04:52 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,21 @@ static int	open_map_file(t_map *map, const char *filename)
 	return (fd);
 }
 
-static int	check_empty_map_line(t_map *map, int i, char *line, int fd)
+static int	process_grid_line(t_map *map, char *line, int *i, int *in_map)
 {
-	if (is_empty_line(line))
+	if (!*in_map && is_map_line(line))
+		*in_map = 1;
+	if (*in_map && is_empty_line(line))
 	{
 		ft_printf("Error\nEmpty line in map\n");
 		free(line);
-		free_partial_grid(map, i);
-		close(fd);
+		free_partial_grid(map, *i);
 		return (1);
 	}
+	if (*in_map)
+		store_map_line(map, line, i);
+	else
+		free(line);
 	return (0);
 }
 
