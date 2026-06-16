@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:19:24 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/15 15:26:16 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:14:46 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ int	main(int ac, char **av)
 	{
 		free_map(&game.map);
 		ft_printf("Error\nFailed to initialize MiniLibX\n");
+		return (1);
+	}
+	if (init_screen(&game))
+	{
+		free_map(&game.map);
+		ft_printf("Error\nFailed to initialize screen image\n");
 		return (1);
 	}
 	if (load_textures(&game))

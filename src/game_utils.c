@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:14:18 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/15 15:09:15 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:19:56 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ void	destroy_images(t_game *g)
 			g->textures[i].img = NULL;
 		}
 		i++;
+	}
+	if (g->screen.img)
+	{
+		mlx_destroy_image(g->vars.mlx, g->screen.img);
+		g->screen.img = NULL;
+		g->screen.addr = NULL;
 	}
 }
 

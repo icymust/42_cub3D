@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/15 16:26:14 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/16 13:09:58 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,15 @@ typedef struct s_texture
 	int			endian;
 }				t_texture;
 
+typedef struct s_img
+{
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_img;
+
 typedef struct s_map
 {
 	char		**grid;
@@ -87,6 +96,7 @@ typedef struct s_game
 	t_player	player;
 	t_config	config;
 	t_texture	textures[4];
+	t_img		screen;
 }				t_game;
 
 typedef struct s_pos
@@ -119,5 +129,6 @@ void			drain_file(int fd);
 char			**split_rgb(char *color);
 int				load_textures(t_game *game);
 void			destroy_images(t_game *g);
+int				init_screen(t_game *game);
 
 #endif

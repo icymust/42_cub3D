@@ -16,7 +16,8 @@ SRCS = src/main.c \
 	src/config_color.c \
 	src/config_save.c \
 	src/textures.c \
-	src/player.c
+	src/player.c \
+	src/screen.c
 
 BONUS =
 
