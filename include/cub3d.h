@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/16 13:09:58 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/16 16:02:07 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,6 @@ char			**split_rgb(char *color);
 int				load_textures(t_game *game);
 void			destroy_images(t_game *g);
 int				init_screen(t_game *game);
+int				render_frame(t_game *game);
 
 #endif

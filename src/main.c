@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:19:24 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/16 13:14:46 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/16 16:01:31 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	place_player_and_hook(&game);
+	render_frame(&game);
 	mlx_loop(game.vars.mlx);
 	return (0);
 }
