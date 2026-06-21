@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/16 16:02:07 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/21 20:45:52 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 # include "../lib/libft/libft.h"
 # include "mlx.h"
 # include <fcntl.h>
+# include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
+# define MV_SP 0.1
+# define PLANE_LEN 0.66
 
 typedef enum e_tex_id
 {
@@ -81,6 +84,31 @@ typedef struct s_img
 	int			endian;
 }				t_img;
 
+typedef struct s_wall
+{
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+}				t_wall;
+
+typedef struct s_ray
+{
+	double		camera_x;
+	double		dir_x;
+	double		dir_y;
+	int			map_x;
+	int			map_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		perp_wall_dist;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+}				t_ray;
+
 typedef struct s_map
 {
 	char		**grid;
@@ -131,5 +159,10 @@ int				load_textures(t_game *game);
 void			destroy_images(t_game *g);
 int				init_screen(t_game *game);
 int				render_frame(t_game *game);
+void			init_ray(t_game *game, t_ray *ray, int x);
+void			init_ray_steps(t_game *game, t_ray *ray);
+void			perform_dda(t_game *game, t_ray *ray);
+void			calc_wall_distance(t_ray *ray);
+void			calc_wall_slice(t_game *game, t_ray *ray, t_wall *wall);
 
 #endif

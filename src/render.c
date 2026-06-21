@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 15:14:39 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/17 14:17:14 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/21 01:09:11 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,45 @@ static void	draw_floor_ceiling(t_game *game)
 	}
 }
 
+static int	get_wall_color(t_ray *ray)
+{
+	if (ray->side == 0)
+		return (0x00DDDDDD);
+	return (0x00888888);
+}
+
+static void	draw_wall_slice(t_game *game, int x, t_wall *wall, t_ray *ray)
+{
+	int	y;
+	int	color;
+
+	y = wall->draw_start;
+	color = get_wall_color(ray);
+	while (y <= wall->draw_end)
+	{
+		put_pixel(&game->screen, x, y, color);
+		y++;
+	}
+}
+
 int	render_frame(t_game *game)
 {
+	int		x;
+	t_ray	ray;
+	t_wall	wall;
+
 	draw_floor_ceiling(game);
+	x = 0;
+	while (x < game->vars.win_width)
+	{
+		init_ray(game, &ray, x);
+		init_ray_steps(game, &ray);
+		perform_dda(game, &ray);
+		calc_wall_distance(&ray);
+		calc_wall_slice(game, &ray, &wall);
+		draw_wall_slice(game, x, &wall, &ray);
+		x++;
+	}
 	mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->screen.img, 0,
 		0);
 	return (0);

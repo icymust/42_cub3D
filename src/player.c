@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 16:19:09 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/15 16:26:33 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/21 20:46:12 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ static void	setup_dir(t_player *player, char dir)
 	if (dir == 'N')
 	{
 		player->dir_y = -1;
-		player->plane_x = 0.66;
+		player->plane_x = PLANE_LEN;
 	}
 	else if (dir == 'S')
 	{
 		player->dir_y = 1;
-		player->plane_x = -0.66;
+		player->plane_x = -PLANE_LEN;
 	}
 	else if (dir == 'E')
 	{
 		player->dir_x = 1;
-		player->plane_y = 0.66;
+		player->plane_y = PLANE_LEN;
 	}
 	else if (dir == 'W')
 	{
 		player->dir_x = -1;
-		player->plane_y = -0.66;
+		player->plane_y = -PLANE_LEN;
 	}
 }
 
