@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/21 22:50:05 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/22 00:01:11 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define MV_SP 0.1
 # define PLANE_LEN 0.66
 # define COL_BUF 0.2
+# define ROT_SP 0.05
 
 typedef enum e_tex_id
 {
@@ -166,5 +167,6 @@ void			perform_dda(t_game *game, t_ray *ray);
 void			calc_wall_distance(t_ray *ray);
 void			calc_wall_slice(t_game *game, t_ray *ray, t_wall *wall);
 void			move_player(t_game *game, double move, int strafe);
+void			rotate_player(t_game *game, double angle);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:13:02 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/21 23:53:58 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/06/22 00:01:55 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	key_hook(int keycode, t_game *game)
 	else if (keycode == 100 || keycode == 2)
 		move_player(game, MV_SP, 1);
 	else if (keycode == 65361 || keycode == 123)
-		printf("<-\n");
+		rotate_player(game, -ROT_SP);
 	else if (keycode == 65363 || keycode == 124)
-		printf("->\n");
+		rotate_player(game, ROT_SP);
 	render_frame(game);
 	return (0);
 }

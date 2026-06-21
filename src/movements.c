@@ -37,3 +37,20 @@ void	move_player(t_game *game, double move, int strafe)
 	if (can_move_to(game, game->player.pos_x, new_y))
 		game->player.pos_y = new_y;
 }
+
+void	rotate_player(t_game *game, double angle)
+{
+	double	old_dir_x;
+	double	old_dir_y;
+	double	old_plane_x;
+	double	old_plane_y;
+
+	old_dir_x = game->player.dir_x;
+	old_dir_y = game->player.dir_y;
+	old_plane_x = game->player.plane_x;
+	old_plane_y = game->player.plane_y;
+	game->player.dir_x = old_dir_x * cos(angle) - old_dir_y * sin(angle);
+	game->player.dir_y = old_dir_x * sin(angle) + old_dir_y * cos(angle);
+	game->player.plane_x = old_plane_x * cos(angle) - old_plane_y * sin(angle);
+	game->player.plane_y = old_plane_x * sin(angle) + old_plane_y * cos(angle);
+}
