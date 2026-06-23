@@ -22,7 +22,25 @@ SRCS = src/main.c \
 	src/raycast.c \
 	src/movements.c
 
-BONUS =
+BONUS = bonus/main_bonus.c \
+	src/game_utils.c \
+	src/game_hooks.c \
+	src/map.c \
+	src/map_utils.c \
+	src/map_check.c \
+	src/map_read.c \
+	src/map_closed.c \
+	src/config.c \
+	src/config_utils.c \
+	src/config_color.c \
+	src/config_save.c \
+	src/textures.c \
+	src/player.c \
+	src/screen.c \
+	src/render.c \
+	src/raycast.c \
+	src/movements.c \
+	bonus/minimap_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
@@ -49,7 +67,7 @@ $(NAME): $(LIBFT) $(MLX_LIB) $(OBJS)
 	$(CC) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
 $(BONUS_NAME): $(LIBFT) $(MLX_LIB) $(BONUS_OBJS)
-	$(CC) $(BONUS_OBJS) $(MLX) $(LIBFT) -o $(BONUS_NAME)
+	$(CC) $(BONUS_OBJS) $(LIBFT) $(MLX_FLAGS) -o $(BONUS_NAME)
 
 bonus: $(BONUS_NAME)
 
