@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 13:12:41 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/23 13:12:42 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/23 16:17:01 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	init_ray_steps(t_game *game, t_ray *ray)
 
 void	init_ray(t_game *game, t_ray *ray, int x)
 {
-	ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
+	ray->camera_x = 2 * x / (double)game->vars.win_width - 1;
 	ray->dir_x = game->player.dir_x + game->player.plane_x * ray->camera_x;
 	ray->dir_y = game->player.dir_y + game->player.plane_y * ray->camera_x;
 	ray->map_x = (int)game->player.pos_x;

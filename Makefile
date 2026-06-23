@@ -1,5 +1,5 @@
 NAME = cub3D
-BONUS_NAME = so_long_bonus
+BONUS_NAME = cub3D_bonus
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I$(MLX_DIR)
 
