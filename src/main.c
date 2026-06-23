@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:19:24 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/16 16:01:31 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/23 13:13:08 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,17 @@ static int	setup_mlx(t_game *game)
 {
 	game->vars.mlx = mlx_init();
 	if (!game->vars.mlx)
+	{
+		printf("Error\nFailed to init mlx\n");
 		return (1);
+	}
 	game->vars.win = mlx_new_window(game->vars.mlx, game->vars.win_width,
 			game->vars.win_height, "CUB 3D");
 	if (!game->vars.win)
+	{
+		printf("Error\nFailed to create new window mlx\n");
 		return (1);
+	}
 	return (0);
 }
 
@@ -47,26 +53,22 @@ int	main(int ac, char **av)
 {
 	t_game	game;
 
-	printf("Cub3d: Loading ...\n");
 	if (handle_args_and_map(ac, av, &game))
 		return (1);
 	if (setup_mlx(&game))
 	{
 		free_map(&game.map);
-		ft_printf("Error\nFailed to initialize MiniLibX\n");
 		return (1);
 	}
 	if (init_screen(&game))
 	{
 		free_map(&game.map);
-		ft_printf("Error\nFailed to initialize screen image\n");
 		return (1);
 	}
 	if (load_textures(&game))
 	{
 		destroy_images(&game);
 		free_map(&game.map);
-		ft_printf("Error\nFailed to load textures\n");
 		return (1);
 	}
 	place_player_and_hook(&game);
