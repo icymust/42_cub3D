@@ -24,7 +24,6 @@ SRCS = src/main.c \
 
 BONUS = bonus/main_bonus.c \
 	src/game_utils.c \
-	src/game_hooks.c \
 	src/map.c \
 	src/map_utils.c \
 	src/map_check.c \
@@ -40,7 +39,8 @@ BONUS = bonus/main_bonus.c \
 	bonus/render_bonus.c \
 	src/raycast.c \
 	src/movements.c \
-	bonus/minimap_bonus.c
+	bonus/minimap_bonus.c \
+	bonus/game_hooks_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
