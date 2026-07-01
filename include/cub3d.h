@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/23 13:28:02 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/06/26 01:09:35 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
-# define MV_SP 0.1
+# define MV_SP 0.2
 # define PLANE_LEN 0.66
 # define COL_BUF 0.2
 # define ROT_SP 0.05
@@ -61,5 +61,6 @@ void	calc_wall_distance(t_ray *ray);
 void	calc_wall_slice(t_game *game, t_ray *ray, t_wall *wall);
 void	move_player(t_game *game, double move, int strafe);
 void	rotate_player(t_game *game, double angle);
+void	put_pixel(t_img *img, int x, int y, int color);
 
 #endif

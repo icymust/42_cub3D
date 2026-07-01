@@ -37,7 +37,7 @@ BONUS = bonus/main_bonus.c \
 	src/textures.c \
 	src/player.c \
 	src/screen.c \
-	src/render.c \
+	bonus/render_bonus.c \
 	src/raycast.c \
 	src/movements.c \
 	bonus/minimap_bonus.c
@@ -80,6 +80,15 @@ mac:
 	rm -f $(OBJS) $(BONUS_OBJS)
 	make -C lib/libft clean
 
+mac_bonus:
+	rm -f $(OBJS) $(BONUS_OBJS) $(NAME) $(BONUS_NAME)
+	$(MAKE) -C lib/libft fclean
+	$(MAKE) -C $(MAC_MLX_DIR) clean
+	$(MAKE) MLX_DIR=$(MAC_MLX_DIR) MLX_LIB=$(MAC_MLX_LIB) \
+		MLX_FLAGS="$(MAC_MLX_FLAGS)" $(BONUS_NAME)
+	rm -f $(OBJS) $(BONUS_OBJS)
+	make -C lib/libft clean
+
 clean:
 	rm -f $(OBJS) $(BONUS_OBJS)
 	make -C lib/libft clean
@@ -92,4 +101,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus mac
+.PHONY: all clean fclean re bonus mac mac_bonus
