@@ -14,6 +14,9 @@ static int	get_map_color(t_game *game, t_pos map)
 		|| game->map.grid[map.y][map.x] == 'E'
 		|| game->map.grid[map.y][map.x] == 'W')
 		return (MM_FLOOR_COLOR);
+	if (game->map.grid[map.y][map.x] == 'D'
+		|| game->map.grid[map.y][map.x] == 'O')
+		return (MM_DOOR_COLOR);
 	return (-1);
 }
 

@@ -6,5 +6,5 @@ Mandatory:
 
 Bonus later:
 - Minimap
-- Mouse rotation
+- Mouse rotation (FIX for linux)
 - Doors / sprites if wanted

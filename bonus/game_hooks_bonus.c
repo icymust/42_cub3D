@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:13:02 by mmustone          #+#    #+#             */
-/*   Updated: 2026/07/01 16:30:29 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/07/08 14:18:25 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	key_hook(int keycode, t_game *game)
 		rotate_player(game, -ROT_SP);
 	else if (keycode == 65363 || keycode == 124)
 		rotate_player(game, ROT_SP);
+	else if (keycode == 32)
+		open_door(game);
 	render_frame(game);
 	return (0);
 }
