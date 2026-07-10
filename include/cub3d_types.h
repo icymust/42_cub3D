@@ -27,6 +27,12 @@ typedef struct s_vars
 	void		*win;
 	int			win_width;
 	int			win_height;
+	int			key_w;
+	int			key_a;
+	int			key_s;
+	int			key_d;
+	int			key_left;
+	int			key_right;
 }				t_vars;
 
 typedef struct s_player
