@@ -95,6 +95,7 @@ typedef struct s_ray
 	int			step_y;
 	int			hit;
 	int			side;
+	double		wall_x;
 }				t_ray;
 
 typedef struct s_map
