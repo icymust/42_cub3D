@@ -5,3 +5,12 @@ minilibx_macos_opengl/
 cub3D
 *.a
 .clangd
+*.md
+!README.md
+*.png
+*.jpg
+*.jpeg
+.claude/
+.DS_Store
+*.swp
+*~
