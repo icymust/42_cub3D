@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/23 13:28:02 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/07/12 18:24:24 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
-# define MV_SP 0.1
+# define MV_SP 0.05
 # define PLANE_LEN 0.66
 # define COL_BUF 0.2
 # define ROT_SP 0.05
