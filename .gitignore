@@ -6,3 +6,12 @@ cub3D
 cub3D_bonus
 *.a
 .clangd
+*.md
+!README.md
+*.png
+*.jpg
+*.jpeg
+.claude/
+.DS_Store
+*.swp
+*~

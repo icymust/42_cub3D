@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/26 01:09:35 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/07/12 18:30:45 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 # define WIN_WIDTH 1280
 # define WIN_HEIGHT 720
-# define MV_SP 0.2
+# define MV_SP 0.05
 # define PLANE_LEN 0.66
 # define COL_BUF 0.2
 # define ROT_SP 0.05
@@ -52,12 +52,15 @@ void	drain_file(int fd);
 char	**split_rgb(char *color);
 int		load_textures(t_game *game);
 void	destroy_images(t_game *g);
+t_texture	*select_texture(t_game *game, t_ray *ray);
+int		calc_tex_x(t_texture *tex, t_ray *ray);
 int		init_screen(t_game *game);
 int		render_frame(t_game *game);
 void	init_ray(t_game *game, t_ray *ray, int x);
 void	init_ray_steps(t_game *game, t_ray *ray);
 void	perform_dda(t_game *game, t_ray *ray);
 void	calc_wall_distance(t_ray *ray);
+void	calc_wall_x(t_game *game, t_ray *ray);
 void	calc_wall_slice(t_game *game, t_ray *ray, t_wall *wall);
 void	move_player(t_game *game, double move, int strafe);
 void	rotate_player(t_game *game, double angle);

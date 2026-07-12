@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 13:12:41 by mmustone          #+#    #+#             */
-/*   Updated: 2026/07/08 13:18:13 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/07/12 18:35:52 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,15 @@ void	calc_wall_distance(t_ray *ray)
 		ray->perp_wall_dist = ray->side_dist_x - ray->delta_dist_x;
 	else
 		ray->perp_wall_dist = ray->side_dist_y - ray->delta_dist_y;
+}
+
+void	calc_wall_x(t_game *game, t_ray *ray)
+{
+	if (ray->side == 0)
+		ray->wall_x = game->player.pos_y + ray->perp_wall_dist * ray->dir_y;
+	else
+		ray->wall_x = game->player.pos_x + ray->perp_wall_dist * ray->dir_x;
+	ray->wall_x -= floor(ray->wall_x);
 }
 
 void	perform_dda(t_game *game, t_ray *ray)

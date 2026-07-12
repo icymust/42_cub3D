@@ -31,6 +31,15 @@ void	calc_wall_distance(t_ray *ray)
 		ray->perp_wall_dist = ray->side_dist_y - ray->delta_dist_y;
 }
 
+void	calc_wall_x(t_game *game, t_ray *ray)
+{
+	if (ray->side == 0)
+		ray->wall_x = game->player.pos_y + ray->perp_wall_dist * ray->dir_y;
+	else
+		ray->wall_x = game->player.pos_x + ray->perp_wall_dist * ray->dir_x;
+	ray->wall_x -= floor(ray->wall_x);
+}
+
 void	perform_dda(t_game *game, t_ray *ray)
 {
 	while (!ray->hit)

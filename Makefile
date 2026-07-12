@@ -52,8 +52,9 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -lXext -lX11 -lm -lbsd
 MAC_MLX_DIR = lib/minilibx_opengl
 MAC_MLX_LIB = $(MAC_MLX_DIR)/libmlx.a
 MAC_MLX_FLAGS = -L$(MAC_MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+HEADERS = include/cub3d.h include/cub3d_types.h
 
-%.o: %.c
+%.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
