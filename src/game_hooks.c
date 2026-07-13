@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_hooks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:13:02 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/22 00:01:55 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/07/13 14:25:17 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	key_release_hook(int keycode, t_game *game)
 	return (0);
 }
 
-static void	apply_movement(t_game *game)
+void	apply_movement(t_game *game)
 {
 	if (game->vars.key_w)
 		move_player(game, MV_SP, 0);
@@ -56,13 +56,6 @@ static void	apply_movement(t_game *game)
 		rotate_player(game, -ROT_SP);
 	if (game->vars.key_right)
 		rotate_player(game, ROT_SP);
-}
-
-int	game_loop(t_game *game)
-{
-	apply_movement(game);
-	render_frame(game);
-	return (0);
 }
 
 void	place_player_and_hook(t_game *game)

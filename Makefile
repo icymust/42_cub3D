@@ -20,7 +20,9 @@ SRCS = src/main.c \
 	src/screen.c \
 	src/render.c \
 	src/raycast.c \
-	src/movements.c
+	src/movements.c \
+	src/raycast_steps.c \
+	src/texture_utils.c
 
 BONUS =
 
