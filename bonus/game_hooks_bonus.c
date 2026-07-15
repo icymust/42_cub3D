@@ -44,29 +44,6 @@ int	key_release_hook(int keycode, t_game *game)
 	return (0);
 }
 
-static void	apply_movement(t_game *game)
-{
-	if (game->vars.key_w)
-		move_player(game, MV_SP, 0);
-	if (game->vars.key_s)
-		move_player(game, -MV_SP, 0);
-	if (game->vars.key_a)
-		move_player(game, -MV_SP, 1);
-	if (game->vars.key_d)
-		move_player(game, MV_SP, 1);
-	if (game->vars.key_left)
-		rotate_player(game, -ROT_SP);
-	if (game->vars.key_right)
-		rotate_player(game, ROT_SP);
-}
-
-int	game_loop(t_game *game)
-{
-	apply_movement(game);
-	render_frame(game);
-	return (0);
-}
-
 int	mouse_hook(int x, int y, t_game *game)
 {
 	int	center_x;
@@ -78,7 +55,7 @@ int	mouse_hook(int x, int y, t_game *game)
 		return (0);
 	delta_x = x - center_x;
 	rotate_player(game, delta_x * 0.003);
-	mlx_mouse_move(game->vars.win, center_x, game->vars.win_height / 2);
+	bonus_mouse_center(game);
 	render_frame(game);
 	return (0);
 }
@@ -92,7 +69,6 @@ void	place_player_and_hook(t_game *game)
 	mlx_hook(game->vars.win, 17, 0, close_win, game);
 	mlx_hook(game->vars.win, 6, 1L << 6, mouse_hook, game);
 	mlx_loop_hook(game->vars.mlx, game_loop, game);
-	mlx_mouse_hide();
-	mlx_mouse_move(game->vars.win, game->vars.win_width / 2,
-		game->vars.win_height / 2);
+	bonus_mouse_hide(game);
+	bonus_mouse_center(game);
 }

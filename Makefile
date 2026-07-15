@@ -6,6 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -I$(MLX_DIR)
 SRCS = src/main.c \
 	src/game_utils.c \
 	src/game_hooks.c \
+	src/game_loop.c \
 	src/map.c \
 	src/map_utils.c \
 	src/map_check.c \
@@ -35,13 +36,17 @@ BONUS = bonus/main_bonus.c \
 	src/config_color.c \
 	src/config_save.c \
 	src/textures.c \
+	src/texture_utils.c \
 	src/player.c \
 	src/screen.c \
 	bonus/render_bonus.c \
 	bonus/raycast_bonus.c \
+	src/raycast_steps.c \
 	bonus/movements_bonus.c \
 	bonus/minimap_bonus.c \
 	bonus/game_hooks_bonus.c \
+	bonus/game_loop_bonus.c \
+	bonus/mouse_bonus.c \
 	bonus/map_check_bonus.c \
 	bonus/door_bonus.c
 

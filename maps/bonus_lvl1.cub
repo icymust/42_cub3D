@@ -1,7 +1,7 @@
-NO textures/wall.xpm
-SO textures/wall.xpm
-WE textures/wall.xpm
-EA textures/wall.xpm
+NO textures/hedge_plain.xpm
+SO textures/hedge_plain.xpm
+WE textures/hedge_vine.xpm
+EA textures/hedge_vine.xpm
 
 C 160,170,180
 F 80,85,80

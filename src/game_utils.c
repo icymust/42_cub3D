@@ -79,10 +79,3 @@ int	close_win(t_game *game)
 	exit(0);
 	return (0);
 }
-
-int	game_loop(t_game *game)
-{
-	apply_movement(game);
-	render_frame(game);
-	return (0);
-}

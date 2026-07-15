@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   door_bonus.c                                       :+:      :+:    :+:   */
+/*   game_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/08 14:15:07 by martinmust        #+#    #+#             */
-/*   Updated: 2026/07/15 15:31:04 by mmustone         ###   ########.fr       */
+/*   Created: 2026/07/15 16:00:00 by mmustone          #+#    #+#             */
+/*   Updated: 2026/07/15 16:00:00 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d_bonus.h"
+#include "../include/cub3d.h"
 
-void	open_door(t_game *game)
+int	game_loop(t_game *game)
 {
-	(void)game;
+	apply_movement(game);
+	render_frame(game);
+	return (0);
 }

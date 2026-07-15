@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/07/15 15:30:33 by mmustone          #+#    #+#             */
+/*   Updated: 2026/07/15 15:30:34 by mmustone         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_BONUS_H
 # define CUB3D_BONUS_H
 
@@ -17,5 +29,8 @@
 
 void	draw_minimap(t_game *game);
 void	open_door(t_game *game);
+void	put_pixel(t_img *img, int x, int y, int color);
+void	bonus_mouse_center(t_game *game);
+void	bonus_mouse_hide(t_game *game);
 
 #endif
