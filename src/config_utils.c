@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   config_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 17:56:11 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/14 22:56:22 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/07/15 15:10:53 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	handle_parse_status(int fd, int status)
 {
 	if (status == 1)
 	{
+		drain_file(fd);
 		close(fd);
 		return (1);
 	}
