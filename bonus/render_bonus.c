@@ -6,7 +6,7 @@
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 15:14:39 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/24 20:41:52 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/07/12 18:35:31 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,23 +41,34 @@ static void	draw_floor_ceiling(t_game *game)
 	}
 }
 
-static int	get_wall_color(t_ray *ray)
+static int	get_texture_pixel(t_texture *tex, int tex_x, int tex_y)
 {
-	if (ray->side == 0)
-		return (0x00DDDDDD);
-	return (0x00888888);
+	char	*pixel;
+
+	pixel = tex->addr + (tex_y * tex->line_length
+			+ tex_x * (tex->bits_per_pixel / 8));
+	return (*(unsigned int *)pixel);
 }
 
 static void	draw_wall_slice(t_game *game, int x, t_wall *wall, t_ray *ray)
 {
-	int	y;
-	int	color;
+	t_texture	*tex;
+	int			tex_x;
+	double		step;
+	double		tex_pos;
+	int			y;
 
+	tex = select_texture(game, ray);
+	tex_x = calc_tex_x(tex, ray);
+	step = (double)tex->height / wall->line_height;
+	tex_pos = (wall->draw_start - game->vars.win_height / 2.0
+			+ wall->line_height / 2.0) * step;
 	y = wall->draw_start;
-	color = get_wall_color(ray);
 	while (y <= wall->draw_end)
 	{
-		put_pixel(&game->screen, x, y, color);
+		put_pixel(&game->screen, x, y,
+			get_texture_pixel(tex, tex_x, (int)tex_pos % tex->height));
+		tex_pos += step;
 		y++;
 	}
 }
@@ -76,6 +87,7 @@ int	render_frame(t_game *game)
 		init_ray_steps(game, &ray);
 		perform_dda(game, &ray);
 		calc_wall_distance(&ray);
+		calc_wall_x(game, &ray);
 		calc_wall_slice(game, &ray, &wall);
 		draw_wall_slice(game, x, &wall, &ray);
 		x++;

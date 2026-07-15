@@ -28,7 +28,6 @@ BONUS = bonus/main_bonus.c \
 	src/game_utils.c \
 	src/map.c \
 	src/map_utils.c \
-	src/map_check.c \
 	src/map_read.c \
 	src/map_closed.c \
 	src/config.c \
@@ -39,10 +38,12 @@ BONUS = bonus/main_bonus.c \
 	src/player.c \
 	src/screen.c \
 	bonus/render_bonus.c \
-	src/raycast.c \
-	src/movements.c \
+	bonus/raycast_bonus.c \
+	bonus/movements_bonus.c \
 	bonus/minimap_bonus.c \
-	bonus/game_hooks_bonus.c
+	bonus/game_hooks_bonus.c \
+	bonus/map_check_bonus.c \
+	bonus/door_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
