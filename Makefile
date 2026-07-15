@@ -6,6 +6,7 @@ CFLAGS = -Wall -Wextra -Werror -I$(MLX_DIR)
 SRCS = src/main.c \
 	src/game_utils.c \
 	src/game_hooks.c \
+	src/game_loop.c \
 	src/map.c \
 	src/map_utils.c \
 	src/map_check.c \
@@ -24,7 +25,30 @@ SRCS = src/main.c \
 	src/raycast_steps.c \
 	src/texture_utils.c
 
-BONUS =
+BONUS = bonus/main_bonus.c \
+	src/game_utils.c \
+	src/map.c \
+	src/map_utils.c \
+	src/map_read.c \
+	src/map_closed.c \
+	src/config.c \
+	src/config_utils.c \
+	src/config_color.c \
+	src/config_save.c \
+	src/textures.c \
+	src/texture_utils.c \
+	src/player.c \
+	src/screen.c \
+	bonus/render_bonus.c \
+	bonus/raycast_bonus.c \
+	src/raycast_steps.c \
+	bonus/movements_bonus.c \
+	bonus/minimap_bonus.c \
+	bonus/game_hooks_bonus.c \
+	bonus/game_loop_bonus.c \
+	bonus/mouse_bonus.c \
+	bonus/map_check_bonus.c \
+	bonus/door_bonus.c
 
 OBJS = $(SRCS:.c=.o)
 BONUS_OBJS = $(BONUS:.c=.o)
@@ -52,7 +76,7 @@ $(NAME): $(LIBFT) $(MLX_LIB) $(OBJS)
 	$(CC) $(OBJS) $(LIBFT) $(MLX_FLAGS) -o $(NAME)
 
 $(BONUS_NAME): $(LIBFT) $(MLX_LIB) $(BONUS_OBJS)
-	$(CC) $(BONUS_OBJS) $(MLX) $(LIBFT) -o $(BONUS_NAME)
+	$(CC) $(BONUS_OBJS) $(LIBFT) $(MLX_FLAGS) -o $(BONUS_NAME)
 
 bonus: $(BONUS_NAME)
 
@@ -62,6 +86,15 @@ mac:
 	$(MAKE) -C $(MAC_MLX_DIR) clean
 	$(MAKE) MLX_DIR=$(MAC_MLX_DIR) MLX_LIB=$(MAC_MLX_LIB) \
 		MLX_FLAGS="$(MAC_MLX_FLAGS)" $(NAME)
+	rm -f $(OBJS) $(BONUS_OBJS)
+	make -C lib/libft clean
+
+mac_bonus:
+	rm -f $(OBJS) $(BONUS_OBJS) $(NAME) $(BONUS_NAME)
+	$(MAKE) -C lib/libft fclean
+	$(MAKE) -C $(MAC_MLX_DIR) clean
+	$(MAKE) MLX_DIR=$(MAC_MLX_DIR) MLX_LIB=$(MAC_MLX_LIB) \
+		MLX_FLAGS="$(MAC_MLX_FLAGS)" $(BONUS_NAME)
 	rm -f $(OBJS) $(BONUS_OBJS)
 	make -C lib/libft clean
 
@@ -77,4 +110,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re bonus mac
+.PHONY: all clean fclean re bonus mac mac_bonus

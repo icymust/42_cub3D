@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   render_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 15:14:39 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/24 20:36:48 by martinmust       ###   ########.fr       */
+/*   Updated: 2026/07/12 18:35:31 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 void	put_pixel(t_img *img, int x, int y, int color)
 {
@@ -92,6 +92,7 @@ int	render_frame(t_game *game)
 		draw_wall_slice(game, x, &wall, &ray);
 		x++;
 	}
+	draw_minimap(game);
 	mlx_put_image_to_window(game->vars.mlx, game->vars.win, game->screen.img, 0,
 		0);
 	return (0);

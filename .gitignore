@@ -3,6 +3,7 @@ minilibx_macos_opengl/
 .vscode/
 *.o
 cub3D
+cub3D_bonus
 *.a
 .clangd
 *.md
