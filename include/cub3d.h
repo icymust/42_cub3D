@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/07/13 14:31:30 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/07/15 14:07:23 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,6 @@ void		rotate_player(t_game *game, double angle);
 int			game_loop(t_game *game);
 void		init_ray_steps(t_game *game, t_ray *ray);
 void		apply_movement(t_game *game);
+void		free_config(t_config *config);
 
 #endif

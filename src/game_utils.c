@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:14:18 by mmustone          #+#    #+#             */
-/*   Updated: 2026/07/13 14:40:48 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/07/15 14:07:06 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	destroy_images(t_game *g)
 	}
 }
 
-static void	free_config(t_config *config)
+void	free_config(t_config *config)
 {
 	free(config->no);
 	free(config->so);

@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:19:24 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/23 13:13:08 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/07/15 14:10:22 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,15 @@ static int	handle_args_and_map(int ac, char **av, t_game *game)
 	if (map_name_check(av[1]))
 		return (1);
 	if (config_parse(&game->config, av[1]))
+	{
+		free_config(&game->config);
 		return (1);
+	}
 	if (map_load(&game->map, av[1]))
+	{
+		free_config(&game->config);
 		return (1);
+	}
 	game->vars.win_height = WIN_HEIGHT;
 	game->vars.win_width = WIN_WIDTH;
 	return (0);
