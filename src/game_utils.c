@@ -6,7 +6,7 @@
 /*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:14:18 by mmustone          #+#    #+#             */
-/*   Updated: 2026/06/16 13:19:56 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/07/15 14:07:06 by mmustone         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,18 @@ void	destroy_images(t_game *g)
 	}
 }
 
+void	free_config(t_config *config)
+{
+	free(config->no);
+	free(config->so);
+	free(config->we);
+	free(config->ea);
+	config->no = NULL;
+	config->so = NULL;
+	config->we = NULL;
+	config->ea = NULL;
+}
+
 int	close_win(t_game *game)
 {
 	if (!game)
@@ -59,8 +71,18 @@ int	close_win(t_game *game)
 	if (game->vars.mlx && game->vars.win)
 	{
 		mlx_destroy_window(game->vars.mlx, game->vars.win);
+		free(game->vars.mlx);
 		game->vars.win = NULL;
 	}
+	free_map(&game->map);
+	free_config(&game->config);
 	exit(0);
+	return (0);
+}
+
+int	game_loop(t_game *game)
+{
+	apply_movement(game);
+	render_frame(game);
 	return (0);
 }
