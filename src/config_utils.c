@@ -70,7 +70,19 @@ int	handle_parse_status(int fd, int status)
 char	**split_rgb(char *color)
 {
 	char	**rgb;
+	int		i;
+	int		commas;
 
+	i = 0;
+	commas = 0;
+	while (color[i])
+	{
+		if (color[i] == ',')
+			commas++;
+		i++;
+	}
+	if (commas != 2)
+		return (printf("Error\nInvalid RGB format\n"), NULL);
 	rgb = ft_split(color, ',');
 	if (!rgb)
 		printf("Error\nFailed to allocate RGB values\n");
