@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/10 17:14:18 by mmustone          #+#    #+#             */
-/*   Updated: 2026/07/15 14:07:06 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/07/19 18:49:25 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,29 @@ void	free_config(t_config *config)
 	config->ea = NULL;
 }
 
-int	close_win(t_game *game)
+void	cleanup_game(t_game *game)
 {
 	if (!game)
-		exit(0);
+		return ;
 	destroy_images(game);
-	if (game->vars.mlx && game->vars.win)
+	if (game->vars.mlx)
 	{
-		mlx_destroy_window(game->vars.mlx, game->vars.win);
+		if (game->vars.win)
+		{
+			mlx_destroy_window(game->vars.mlx, game->vars.win);
+			game->vars.win = NULL;
+		}
+		mlx_destroy_display(game->vars.mlx);
 		free(game->vars.mlx);
-		game->vars.win = NULL;
+		game->vars.mlx = NULL;
 	}
 	free_map(&game->map);
 	free_config(&game->config);
+}
+
+int	close_win(t_game *game)
+{
+	cleanup_game(game);
 	exit(0);
 	return (0);
 }

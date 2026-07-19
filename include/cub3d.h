@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:44:28 by mmustone          #+#    #+#             */
-/*   Updated: 2026/07/15 15:16:14 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/07/19 18:49:58 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ int			game_loop(t_game *game);
 void		init_ray_steps(t_game *game, t_ray *ray);
 void		apply_movement(t_game *game);
 void		free_config(t_config *config);
+void		cleanup_game(t_game *game);
 
 #endif

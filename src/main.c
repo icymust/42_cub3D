@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmustone <mmustone@student.42.fr>          +#+  +:+       +#+        */
+/*   By: martinmust <martinmust@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 13:19:24 by mmustone          #+#    #+#             */
-/*   Updated: 2026/07/15 14:10:22 by mmustone         ###   ########.fr       */
+/*   Updated: 2026/07/19 18:51:29 by martinmust       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,24 +61,14 @@ int	main(int ac, char **av)
 
 	if (handle_args_and_map(ac, av, &game))
 		return (1);
-	if (setup_mlx(&game))
+	if (setup_mlx(&game) || init_screen(&game) || load_textures(&game))
 	{
-		free_map(&game.map);
-		return (1);
-	}
-	if (init_screen(&game))
-	{
-		free_map(&game.map);
-		return (1);
-	}
-	if (load_textures(&game))
-	{
-		destroy_images(&game);
-		free_map(&game.map);
+		cleanup_game(&game);
 		return (1);
 	}
 	place_player_and_hook(&game);
 	render_frame(&game);
 	mlx_loop(game.vars.mlx);
+	cleanup_game(&game);
 	return (0);
 }
